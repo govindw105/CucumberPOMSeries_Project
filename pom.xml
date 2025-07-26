@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>CucumberPOMSeries</groupId>
+  <artifactId>CucumberPOMSeries</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>CucumberPOMSeries</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <java.version>21.0.6</java.version>
+        <junit.version>4.13.2</junit.version>
+        <cucumber.version>6.11.0</cucumber.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+  
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.34.0</version>
+</dependency>
+
+  <!-- Cucumber Dependencies -->
+  <dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>7.14.0</version>
+  </dependency>
+
+  <dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-testng</artifactId>
+    <version>7.14.0</version>
+  </dependency>
+
+  <dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-core</artifactId>
+    <version>7.14.0</version>
+  </dependency>
+
+  <!-- TestNG -->
+  <dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.11.0</version>
+    <scope>test</scope>
+  </dependency>
+
+
+<!-- ✅ ExtentReports (Latest Stable) -->
+<dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>5.1.1</version>
+</dependency>
+
+
+<!-- ✅ Extent Cucumber 7 Adapter -->
+<dependency>
+    <groupId>tech.grasshopper</groupId>
+    <artifactId>extentreports-cucumber7-adapter</artifactId>
+    <version>1.14.0</version> <!-- Still the latest available -->
+</dependency>
+
+<!-- ✅ WebDriverManager (Latest) -->
+<dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>6.2.0</version> <!-- Latest as of July 2025 -->
+</dependency>
+
+
+    <!-- SLF4J API (Logging) -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.36</version>
+    </dependency>
+
+    <!-- SLF4J Simple Binding (Console Output) -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>1.7.36</version>
+    </dependency>
+
+
+
+
+
+
+
+</dependencies>
+
+  <build>
+    <plugins>
+    
+    <plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <version>3.10.1</version>
+  <configuration>
+    <compilerArgs>
+      <arg>--add-exports</arg>
+      <arg>jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+    </compilerArgs>
+  </configuration>
+</plugin>
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <version>3.10.1</version>
+  <configuration>
+    <compilerArgs>
+      <arg>--add-exports</arg>
+      <arg>jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+    </compilerArgs>
+  </configuration>
+</plugin>
+
+    
+    
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.10.1</version>
+            <configuration>
+                <source>${maven.compiler.source}</source>
+                <target>${maven.compiler.target}</target>
+                <compilerArgument>-Werror</compilerArgument>
+            </configuration>
+        </plugin>
+           
+        
+        <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.3</version>
+                 <configuration>                 
+                    <parallel>methods</parallel>                  
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
+                  </configuration>
+         </plugin>
+
+         <plugin> 
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-failsafe-plugin</artifactId>
+              <version>3.5.3</version>
+              <executions>
+                <execution>
+                  <goals>
+                    <goal>integration-test</goal>
+                   <!-- <goal>verify</goal> -->
+                  </goals>
+                  <configuration>
+                    <includes>
+                      <include>**/parallelRun.java</include>
+                     <!-- <include>**/*IntegrationTest.java</include>--> 
+                    </includes>
+                    <parallel>methods</parallel>
+                    <threadCount>4</threadCount>
+                    <perCoreThreadCount>true</perCoreThreadCount>
+                  </configuration>
+                </execution>
+              </executions>
+          </plugin>
+                          
+    </plugins>
+  </build>
+</project>
