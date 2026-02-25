@@ -1,142 +1,122 @@
-🧪 Cucumber Selenium POM Framework
+🧪 Cucumber Selenium BDD Automation Framework
 
 📌 Project Overview
 
-This project implements a Page Object Model (POM) based automation testing framework using Cucumber BDD, TestNG, and Selenium WebDriver. The framework automates login functionality and account page validation on the Automation Practice website (http://www.automationpractice.pl).[1]
-​
+This project is a Cucumber BDD-based automation framework built using Selenium WebDriver and TestNG.
 
-The automation framework:
+The framework automates the login functionality and account page validation of the Automation Practice website:
 
-Validates login page elements and title
+👉 http://www.automationpractice.pl
 
-Performs successful login with credentials
-
-Verifies accounts page sections and count
-
-Generates comprehensive HTML/Extent reports
-
-Supports parallel test execution
+The project follows the Page Object Model (POM) design pattern and supports parallel test execution.
 
 🛠️ Tech Stack
 
-Component	Version/Tools
-Language	Java 17 
-​
-Automation	Selenium WebDriver 4.34.0 
-​
-BDD Framework	Cucumber 7.14.0 + TestNG 
-​
-Test Runner	TestNG 7.11.0 
-​
-Reporting	ExtentReports 5.1.1 + Cucumber Adapter 
-​
-Driver Management	WebDriverManager 6.2.0 
-​
-Build Tool	Maven 
-​
-Version Control	Git & GitHub
-🧪 Functional Flow Automated
+Java 17
 
-Launch login page and validate title
+Selenium WebDriver
 
-Verify forgot password link visibility
-​
+Cucumber (BDD)
 
-Enter credentials using DataTable
-​
+TestNG
 
-Perform login and navigate to accounts page
+Maven
 
-Validate accounts sections list and count
+WebDriverManager
 
-Generate test execution reports
+Extent Reports
 
-⚙️ Key Automation Concepts Implemented
+Git & GitHub
+
+🧪 Functionalities Automated
+
+Validate Login page title
+
+Verify Forgot Password link
+
+Perform login using valid credentials
+
+Navigate to Accounts page
+
+Validate account sections
+
+Verify total number of sections
+
+Capture screenshots for failed scenarios
+
+Generate HTML & Extent Reports
+
+⚙️ Framework Architecture
 ✅ Page Object Model (POM)
 
-LoginPage.java & AccountsPage.java with locators and actions
+LoginPage.java – Contains login page locators and actions
+
+AccountsPage.java – Contains account page locators and validations
+
+✅ Driver Management
+
+DriverFactory.java – Manages WebDriver initialization
+
+Uses ThreadLocal for parallel execution support
 
 ✅ Cucumber BDD Structure
 
-Gherkin scenarios with step definitions
+Feature files written in Gherkin
 
-DataTable support for test data
-​
+Step Definitions mapped to feature steps
 
-✅ TestNG Integration
+DataTable used for passing login credentials
 
-Parallel execution via @DataProvider(parallel=true)
-​
+✅ Hooks
 
-Failed test rerun capability
-​
+ApplicationHooks.java
 
-✅ Framework Features
+Handles browser setup & teardown
 
-DriverFactory.java for browser management
-​
+Captures screenshots for failed tests
 
-ConfigReader.java for property-based configuration
-​
+✅ Reporting
 
-ApplicationHooks.java for setup/teardown & screenshots
-​
+Cucumber HTML Report
 
-ExtentReports with timeline & custom config
+JSON Report
 
-✅ Maven Configuration
-
-Surefire/Failsafe plugins for parallel execution
-​
-
-cucumber.json + HTML + Extent reports generation
-​
+Extent Reports integration
 
 📂 Project Structure
+src/test/java/
+ ├── com/pages/          # Page Object classes
+ ├── com/qa/factory/     # Driver & Configuration
+ ├── parallel/           # Steps, Hooks, Runner
 
-text
-├── src/test/java/
-│   ├── com/pages/          # POM classes [file:2][file:3]
-│   ├── com/qa/factory/     # Driver & Config [file:4][file:5]
-│   └── parallel/           # Steps, Hooks, Runners [file:8][file:9][file:10][file:11]
-├── src/test/resources/     # Feature files (assumed)
-├── pom.xml                 # Dependencies & Plugins [file:1]
-└── extent-config.xml       # Report configuration [file:14]
+src/test/resources/
+ ├── features/           # Gherkin feature files
+
+pom.xml                  # Dependencies & Plugins
+extent-config.xml        # Extent report configuration
 ▶️ How to Run
-
-bash
-# Clone repository
-git clone <repo-url>
-
-# Install dependencies
-mvn clean install
-
-# Run all tests
-mvn test
-
-# Run parallel execution
+Run all tests:
+mvn clean test
+Run parallel execution:
 mvn verify
+View Reports:
 
-# View reports
 target/cucumber-reports.html
-test-output/ (Extent Reports)
-🎯 Learning Outcomes
 
-✅ Implementing Page Object Model pattern
+test-output/ExtentReports
 
-✅ Cucumber BDD with TestNG integration
+🎯 Key Learning Outcomes
 
-✅ Parallel test execution configuration
+Implementing Page Object Model (POM)
 
-✅ ExtentReports generation & customization
+Cucumber BDD framework integration
 
-✅ DataTable handling in step definitions
+Parallel execution using TestNG
 
-✅ Framework hooks for setup/teardown
+Driver management using ThreadLocal
 
-✅ Maven multi-module test execution
+DataTable usage in Cucumber
 
-✅ Cross-browser testing setup
+Extent report configuration
 
-Reports generated: HTML, JSON, Extent Dashboard, Timeline
-​
+Maven test execution lifecycle
